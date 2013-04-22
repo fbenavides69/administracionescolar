@@ -1,8 +1,9 @@
 # Django settings for decroly project.
 
 import os.path
-DEBUG = True
+DEBUG = False 
 TEMPLATE_DEBUG = DEBUG
+ALLOWED_HOSTS = ['localhost']
 
 ADMINS = (
     ('Francisco Benavides', 'francisco.benavides@gmail.com'),

@@ -48,3 +48,7 @@ urlpatterns = patterns('decroly.views',
 
 urlpatterns += staticfiles_urlpatterns()
 
+handler404 = 'decroly.views.custom404'
+handler403 = 'decroly.views.custom403'
+handler500 = 'decroly.views.custom500'
+
