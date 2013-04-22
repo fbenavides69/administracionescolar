@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block navigation %}                                      
+<nav>                                                       
+  <ul>                                                      
+    <li><a href="#">Reportes</a></li>                       
+    <li><a href="{% url 'alumni-inscripcion' %}">Inscripci&oacute;n</a></li>
+  </ul>                                                     
+</nav>                                                      
+{% endblock %}
+
+
+{% block logout %}
+<div class="container">
+  <div class="row">
+    <div class="span12 text-right">
+      <p><a href="{% url 'logout' %}">Salir</a> {{ user.username }}</p>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+
+{% block content %}
+  <h2>Inscripci&oacute;n - Documentos</h2>
+  <form action="" method="post" enctype="multipart/form-data" accept-charset="utf-8">
+    {% csrf_token %}
+    <table>
+    {% for field in form %}
+    <tr>
+    <td>{{ field.label_tag }}</td><td>{{ field }}</td>
+    </tr>
+    {% endfor %}
+    </table>
+    <br />
+    <p><input type="submit" value="Finalizar" /></p>
+  </form>
+{% endblock %}

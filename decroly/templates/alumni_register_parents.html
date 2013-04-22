@@ -1,0 +1,244 @@
+{% extends "base.html" %}
+
+{% block navigation %}                                      
+<nav>                                                       
+  <ul>                                                      
+    <li><a href="#">Reportes</a></li>                       
+    <li><a href="{% url 'alumni-inscripcion' %}">Inscripci&oacute;n</a></li>
+  </ul>                                                     
+</nav>                                                      
+{% endblock %}
+
+
+{% block logout %}
+<div class="container">
+  <div class="row">
+    <div class="span12 text-right">
+      <p><a href="{% url 'logout' %}">Salir</a> {{ user.username }}</p>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+
+{% block content %}
+  <h2>Inscripci&oacute;n - Padres</h2>
+  <form action="" method="post" enctype="multipart/form-data" accept-charset="utf-8">
+    {% csrf_token %}
+
+    <fieldset>
+      <legend><strong>&nbsp;Pap&aacute;&nbsp;</strong></legend>
+      <div class="row">
+        <div class="span2">
+          <p>Nombre:</p>
+        </div>
+        <div class="span2">
+          <p>{{ form.father_name }}</p>
+        </div>
+        <div class="span8">
+        <p>{{ form.father_familynames }}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span2">
+          <p>Tel. Celular:</p>
+        </div>
+        <div class="span10">
+          <p>{{ form.father_cell_phone }}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span2">
+          <p>Tel./Ext. Trabajo:</p>
+        </div>
+        <div class="span3">
+          <p>{{ form.father_telephone_work }}</p>
+        </div>
+        <div class="span7">
+          <p>{{ form.father_telephone_extension }}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span2">
+          <p>Email:</p>
+        </div>
+        <div class="span10">
+          <p>{{ form.father_email }}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span2">
+          <p>Ocupaci&oacute;n:</p>
+        </div>
+        <div class="span10">
+          <p>{{ form.father_occupation }}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span2">
+           <p>Foto:</p>
+        </div>
+        <div class="span10">
+          <p>{{ form.father_photo }}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span2">
+          <p>IFE:</p>
+        </div>
+        <div class="span3">
+          <p>{{ form.father_ife_id }}</p>
+        </div>
+        <div class="span7">
+          <p>{{ form.father_ife_file }}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span2">
+          <p>CURP:</p>
+        </div>
+        <div class="span10">
+          <p>{{ form.father_curp_id }}</p>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend><strong>&nbsp;Mam&aacute;&nbsp;</strong></legend>
+      <div class="row">
+        <div class="span2">
+          <p>Nombre:</p>
+        </div>
+        <div class="span2">
+          <p>{{ form.mother_name }}</p>
+        </div>
+        <div class="span8">
+        <p>{{ form.mother_familynames }}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span2">
+          <p>Tel. Celular:</p>
+        </div>
+        <div class="span10">
+          <p>{{ form.mother_cell_phone }}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span2">
+          <p>Tel./Ext. Trabajo:</p>
+        </div>
+        <div class="span3">
+          <p>{{ form.mother_telephone_work }}</p>
+        </div>
+        <div class="span7">
+          <p>{{ form.mother_telephone_extension }}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span2">
+          <p>Email:</p>
+        </div>
+        <div class="span10">
+          <p>{{ form.mother_email }}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span2">
+          <p>Ocupaci&oacute;n:</p>
+        </div>
+        <div class="span10">
+          <p>{{ form.mother_occupation }}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span2">
+           <p>Foto:</p>
+        </div>
+        <div class="span10">
+          <p>{{ form.mother_photo }}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span2">
+          <p>IFE:</p>
+        </div>
+        <div class="span3">
+          <p>{{ form.mother_ife_id }}</p>
+        </div>
+        <div class="span7">
+          <p>{{ form.mother_ife_file }}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span2">
+          <p>CURP:</p>
+        </div>
+        <div class="span10">
+          <p>{{ form.mother_curp_id }}</p>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend><strong>&nbsp;Direcci&oacute;n&nbsp;</strong></legend>
+      <div class="row">
+        <div class="span2">
+          <p>Tel. Casa</p>
+        </div>
+        <div class="span10">
+          <p>{{ form.house_telephone }}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span2">
+          <p>Calle<br  />N&uacute;mero ext/int:</p>
+        </div>
+        <div class="span3">
+          <p>{{ form.street_name }}</p>
+        </div>
+        <div class="span3">
+          <p>{{ form.street_exterior_number }}</p>
+        </div>
+        <div class="span4">
+          <p>{{ form.street_interior_number }}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span2">
+          <p>Colonia:</p>
+        </div>
+        <div class="span10">
+          <p>{{ form.area_colonia }}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span2">
+          <p>C.P.</p>
+        </div>
+        <div class="span10">
+          <p>{{ form.zip_code }}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span2">
+          <p>Mapa</p>
+        </div>
+        <div class="span10">
+          <p>{{ form.mapa }}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span2">
+          <p>Descripci&oacute;n:</p>
+        </div>
+        <div class="span10">
+          <p>{{ form.description }}</p>
+        </div>
+      </div>
+    </fieldset>
+   
+    <br />
+    <p><input type="submit" value="Persona(s) Autorizada(s) &rarr;" /></p>
+  </form>
+{% endblock %}

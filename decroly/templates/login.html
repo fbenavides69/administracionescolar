@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load l10n %}
+
+{% block content %}
+
+  <div class="container">
+    <div class="row">
+      <div class="span1"></div>
+      <div class="span11">
+        {% if form.errors %}
+        <p>Usuario/Clave invalidos</p>
+        {% else %}
+        <p>&nbsp;</p>
+        {% endif %}
+      </div>
+    </div><!-- row -->
+    <form action="" method="post" accept-charset="utf-8">
+  {% csrf_token %}
+      <div class="row">
+        <div class="span1"></div>
+        <div class="span2">
+          <p>Usuario:</p>
+        </div>
+        <div class="span9">
+          <p>{{ form.username }}</p>
+        </div>
+      </div><!-- #row -->
+      <div class="row">
+        <div class="span1"></div>
+        <div class="span2">
+          <p>Clave:</p>
+        </div>
+        <div class="span9">
+          <p>{{ form.password }}</p>
+        </div>
+      </div><!-- row -->
+      <div class="row">
+        <div class="span1"></div>
+        <div class="span2">
+          <p><input type="submit" value="Ingresar" /></p>
+        </div>
+        <div class="span9"></div>
+      </div><!-- #row -->
+    </form>
+  </div><!-- container -->
+{% endblock %}

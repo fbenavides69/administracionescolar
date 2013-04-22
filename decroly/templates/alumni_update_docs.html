@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block navigation %}
+<nav>
+  <ul>
+    <li><a href="{% url 'alumni-actualizar-documentos' alumno.id %}">Documentos</a></li>
+    <li><a href="{% url 'alumni-actualizar-finanzas'   alumno.id %}">Pagos</a></li>
+    <li><a href="{% url 'alumni-actualizar-autorizado' alumno.id %}">Autorizados</a></li>
+    <li><a href="{% url 'alumni-actualizar-padres'     alumno.id %}">Padres</a></li>
+    <li><a href="{% url 'alumni-actualizar-alumno'     alumno.id %}">Alumno</a></li>
+  </ul>
+</nav>
+{% endblock %}
+
+
+{% block logout %}
+<div class="container">
+  <div class="row">
+    <div class="span12 text-right">
+      <p><a href="{% url 'logout' %}">Salir</a> {{ user.username }}</p>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+
+{% block content %}
+  <h2>Actualizar - Documentos</h2>
+  <form action="" method="post" enctype="multipart/form-data" accept-charset="utf-8">
+    {% csrf_token %}
+    <table>
+    {% for field in form %}
+    <tr>
+    <td>{{ field.label_tag }}:</td><td>{{ field }}</td>
+    </tr>
+    {% endfor %}
+    </table>
+    <br />
+    <p><input type="submit" value="Guardar" /> <span><a href="{% url 'alumni-mostrar' alumno.id %}">Volver</a><span></p>
+    </table>
+  </form>
+{% endblock %}

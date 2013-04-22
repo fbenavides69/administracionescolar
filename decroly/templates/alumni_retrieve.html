@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load l10n %}
+
+{% block navigation %}
+<nav>
+  <ul>
+    <li><a href="{% url 'alumni-actualizar-documentos' alumno.id %}">Documentos</a></li>
+    <li><a href="{% url 'alumni-actualizar-finanzas'   alumno.id %}">Pagos</a></li>
+    <li><a href="{% url 'alumni-actualizar-autorizado' alumno.id %}">Autorizados</a></li>
+    <li><a href="{% url 'alumni-actualizar-padres'     alumno.id %}">Padres</a></li>
+    <li><a href="{% url 'alumni-actualizar-alumno'     alumno.id %}">Alumno</a></li>
+  </ul>
+</nav>
+{% endblock %}
+
+
+{% block logout %}
+<div class="container">
+  <div class="row">
+    <div class="span12 text-right">
+      <p><a href="{% url 'logout' %}">Salir</a> {{ user.username }}</p>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+
+{% block content %}
+  {% if alumno %}
+  <div class="container">
+    <div class="row">
+      <div class="span3">
+        <!-- Foto alumno -->
+        {% if alumno.child_photo %}
+        <img src="{{ alumno.child_photo.url }}" alt="{{ alumno.child_familynames }} {{ alumno.child_name }}" title="{{ alumno.child_familynames }} {{ alumno.child_name }}" height="250px" width="200px" style="margin-top:15px">
+        {% endif %}
+      </div>
+      <div class="span9">
+        <!-- Datos alumno -->
+        <div class="row">
+          <div class="span9">
+            <h1><span style="color:#E44D26;">{{ alumno.child_familynames}} {{ alumno.child_name }}</span></h1>
+          </div>
+        </div>
+        <div class="row">
+          <div class="span2">
+            <p>Folio:</p>
+          </div>
+          <div class="span7">
+            <p><span style="color:#F16529;">{{ alumno.folio }}</span></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="span2">
+            <p>Edad:</p>
+          </div>
+          <div class="span7">
+            <p>{{ alumno.age }} A&ntilde;os</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="span2">
+            <p>Fecha de Nacimiento:</p>
+          </div>
+          <div class="span7">
+            <p>{{ alumno.child_dob|localize }}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="span2">
+            <p>CURP:<p>
+          </div>
+          <div class="span7">
+            <p>{{ alumno.child_curp_id }}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="span2">
+            <p>Grado:</p>
+          </div>
+          <div class="span7">
+            <p>{{ alumno.group_string }}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="span2">
+            <p>Horario:</p>
+          </div>
+          <div class="span7">
+            <p>{{ alumno.schedule_string }}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="span2">
+            <p>Observaciones:</p>
+          </div>
+          <div class="span7">
+            <p>{{ alumno.child_observations }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+        <div class="row">
+          <div class="span12 text-center">
+            <p><strong>En caso de Emergencia llamar al <span style="color:#E44D26;">{{ alumno.emergency_telephone_number }}</span> con el/la Sr(a). <span style="color:#E44D26;">{{ alumno.emergency_contact }}</span></strong></p>
+            <p><strong>El m&eacute;dico del alumno es el/la Dr(a). <span style="color:#E44D26;">{{ alumno.doctor }}</span> y el hospital es el <span style="color:#E44D26;">{{ alumno.hospital }}</span></strong></p>
+          </div>
+          <div class="span12 text-center">
+            <p><a href="{% url 'alumni-borrar' alumno.id %}">Borrar</a></p>
+          </div>
+        </div>
+  </div>
+  {% else %}
+    <p>El alumno no existe</p>
+  {% endif %}
+{% endblock %}

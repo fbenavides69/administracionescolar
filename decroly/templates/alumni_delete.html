@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block navigation %}
+<nav>
+  <ul>
+    <li><a href="{% url 'alumni-actualizar-documentos' alumno.id %}">Documentos</a></li>
+    <li><a href="{% url 'alumni-actualizar-finanzas'   alumno.id %}">Pagos</a></li>
+    <li><a href="{% url 'alumni-actualizar-autorizado' alumno.id %}">Autorizados</a></li>
+    <li><a href="{% url 'alumni-actualizar-padres'     alumno.id %}">Padres</a></li>
+    <li><a href="{% url 'alumni-actualizar-alumno'     alumno.id %}">Alumno</a></li>
+  </ul>
+</nav>
+{% endblock %}
+
+{% block content %}
+  <h2>Borrar</h2>
+  <form action="" method="post" accept-charset="utf-8">
+    {% csrf_token %}
+    <p>Seguro que desea borrar?
+    {{ form.as_p }}
+    <p><input type="submit" value="Sí, Borrar" name="Delete" />  <a href="{% url 'alumni-lista' %}">No, Cancelar</a></p>
+  </form>
+{% endblock %}

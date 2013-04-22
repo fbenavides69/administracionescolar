@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+
+{% block navigation %}
+<nav>
+  <ul>
+    <li><a href="{% url 'alumni-actualizar-documentos' alumno.id %}">Documentos</a></li>
+    <li><a href="{% url 'alumni-actualizar-finanzas'   alumno.id %}">Pagos</a></li>
+    <li><a href="{% url 'alumni-actualizar-autorizado' alumno.id %}">Autorizados</a></li>
+    <li><a href="{% url 'alumni-actualizar-padres'     alumno.id %}">Padres</a></li>
+    <li><a href="{% url 'alumni-actualizar-alumno'     alumno.id %}">Alumno</a></li>
+  </ul>
+</nav>
+{% endblock %}
+
+
+{% block logout %}
+<div class="container">
+  <div class="row">
+    <div class="span12 text-right">
+      <p><a href="{% url 'logout' %}">Salir</a> {{ user.username }}</p>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+
+{% block content %}
+  <h2>Actualizar - Persona(s) Autorizada(s)</h2>
+  <form action="" method="post" accept-charset="utf-8">
+    {% csrf_token %}
+    
+    <fieldset>
+      <legend><strong>&nbsp;Persona Autorizada&nbsp;</strong></legend>
+      <div class="row">
+        <div class="span2">
+          <p>Nombre:</p>
+        </div>
+        <div class="span2">
+          <p>{{ form.authorized1_name }}</p>
+        </div>
+        <div class="apan8">
+          <p>{{ form.authorized1_familynames }}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span2">
+          <p>Tel. Celular:<p>
+        </div>
+        <div class="span10">
+          <p>{{ form.authorized1_cell_phone }}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span2">
+          <p>Tel. Casa:</p>
+        </div>
+        <div class="span10">
+          <p>{{ form.authorized1_telephone }}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span2">
+          <p>Parentezco:</p>
+        </div>
+        <div class="span10">
+          <p>{{ form.authorized1_parentezco }}</p>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend><strong>&nbsp;Persona Autorizada&nbsp;</strong></legend>
+      <div class="row">
+        <div class="span2">
+          <p>Nombre:</p>
+        </div>
+        <div class="span2">
+          <p>{{ form.authorized2_name }}</p>
+        </div>
+        <div class="apan8">
+          <p>{{ form.authorized2_familynames }}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span2">
+          <p>Tel. Celular:<p>
+        </div>
+        <div class="span10">
+          <p>{{ form.authorized2_cell_phone }}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span2">
+          <p>Tel. Casa:</p>
+        </div>
+        <div class="span10">
+          <p>{{ form.authorized2_telephone }}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span2">
+          <p>Parentezco:</p>
+        </div>
+        <div class="span10">
+          <p>{{ form.authorized2_parentezco }}</p>
+        </div>
+      </div>
+    </fieldset>
+
+    <br/>
+    <p><input type="submit" value="Guardar" /> <span><a href="{% url 'alumni-mostrar' alumno.id %}">Volver</a></span></p>
+  </form>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  {% if AlumniList %}
+  <ul>
+    {% for Alumni in AlumniList %}
+    <li><a href="{% url AlumniDetails Alumni.id %}">{{ Alumni.child_name }}</a></li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p>
+    No hay alumnos
+  </p>
+  {% endif %}
+{% endblock %}

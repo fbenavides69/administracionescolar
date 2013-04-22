@@ -1,0 +1,53 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="sp-MX" xml:lang="sp-MX"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  
+  <title>Control Escolar | Guarder&iacute;a - CENDI Decroly Aguascalientes M&eacute;xico</title>
+  <meta name="description" content="Automatizaci&oacute;n de los procesos administrativos de un plantel educativo por medio de m&oacute;dulos especializados en la gesti&oacute;n de inscripciones, control de alumnos y reportes varios.">
+  <meta name="author" content="Francisco R. Benavides G.">
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  
+  <link rel="stylesheet" href="http://localhost:8080/static/css/bootstrap/style.css" />
+  <link rel="stylesheet" href="http://localhost:8080/static/css/bootstrap/bootstrap.css" />
+  <script src="http://localhost:8080/static/js/libs/modernizr-2.0.6.min.js"></script>
+  <!--<link rel="stylesheet" href="/static/css/bootstrap/style.css" />-->
+  <!--<link rel="stylesheet" href="/static/css/bootstrap/bootstrap.css" />-->
+  <!--<script src="/static/js/libs/modernizr-2.0.6.min.js"></script>-->
+</head>
+<body>
+
+  <div id="header-container">
+    <header class="wrapper clearfix">
+      <a href="{% url 'alumni-lista' %}"><h1 id="title">Decroly</h1></a>
+      {% block navigation %}
+
+      {% endblock %}
+    </header>
+  </div>
+
+  <div id="main-container">
+    <div id="main" class="wrapper clearfix">
+      {% block content %}
+
+      {% endblock %}
+    </div> <!-- #main -->
+    {% block logout %}
+
+    {% endblock %}
+  </div> <!-- #main-container -->
+
+  <div id="footer-container">
+    <footer class="wrapper">
+      <p>Control Escolar | Guarder&iacute;a&reg; - &copy;2013</p>
+    </footer>
+  </div>
+
+  </body>
+
+</html>

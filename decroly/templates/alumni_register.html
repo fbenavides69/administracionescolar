@@ -1,0 +1,161 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load l10n %}
+
+{% block navigation %}
+<nav>
+  <ul>
+    <li><a href="#">Reportes</a></li>
+    <li><a href="{% url 'alumni-inscripcion' %}">Inscripci&oacute;n</a></li>
+  </ul>
+</nav>
+{% endblock %}
+
+
+{% block logout %}
+<div class="container">
+  <div class="row">
+    <div class="span12 text-right">
+      <p><a href="{% url 'logout' %}">Salir</a> {{ user.username }}</p>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+
+{% block content %}
+  <h2>Inscripci&oacute;n - Alumno</h2>
+  <form action="" method="post" enctype="multipart/form-data" accept-charset="utf-8">
+    {% csrf_token %}
+    
+     <fieldset>
+      <legend><strong>&nbsp;Alumno/Alumna&nbsp;</strong></legend>
+      <div class="row">
+        <div class="span2">
+          <p>Nombre:</p>
+        </div>
+        <div class="span2">
+          <p>{{ form.child_name }}</p>
+        </div>
+        <div class="span8">
+          <p>{{ form.child_familynames }}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span2">
+          <p>Fecha de nacimiento:</p>
+        </div>
+        <div class="span10">
+          <p>{{ form.child_dob }}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span2">
+          <p>Sexo:</p>
+        </div>
+        <div class="span10">
+          <p>{{ form.child_gender }}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span2">
+          <p>Tipo de Sangre:</p>
+        </div>
+        <div class="span10">
+          <p>{{ form.child_blood_type }}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span2">
+          <p>CURP:</p>
+        </div>
+        <div class="span10">
+          <p>{{ form.child_curp_id }}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span2">
+          <p>Foto:</p>
+        </div>
+        <div class="span10">
+          <p>{{ form.child_photo }}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span2">
+          <p>Observaciones:</p>
+        </div>
+        <div class="span10">
+          <p>{{ form.child_observations }}</p>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend><strong>&nbsp;Escuela&nbsp;</strong></legend>
+      <div class="row">
+        <div class="span2">
+          <p>Convenio:</p>
+        </div>
+        <div class="span10">
+          <p>{{ form.agreement }}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span2">
+          <p>Grupo:</p>
+        </div>
+        <div class="span10">
+          <p>{{ form.child_group }}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span2">
+          <p>Horario:</p>
+        </div>
+        <div class="span10">
+          <p>{{ form.child_schedule }}</p>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend><strong>&nbsp;Datos en Caso de Emergenc&iacute;a&nbsp;</strong></legend>
+      <div class="row">
+        <div class="span2">
+          <p>Tel. de Emergenc&eacute;a:</p>
+        </div>
+        <div class="span10">
+          <p>{{ form.emergency_telephone_number }}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span2">
+          <p>Contacto en caso de Emergenc&iacute;a:</p>
+        </div>
+        <div class="span10">
+          <p>{{ form.emergency_contact }}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span2">
+          <p>Doctor:</p>
+        </div>
+        <div class="span10">
+          <p>{{ form.doctor }}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span2">
+          <p>Hospital:</p>
+        </div>
+        <div class="span10">
+          <p>{{  form.hospital }}</p>
+        </div>
+      </div>
+    </fieldset>
+
+    <br />
+    <p><input type="submit" value="Padres &rarr;" /></p>
+  </form>
+{% endblock %}

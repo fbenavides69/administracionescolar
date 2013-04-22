@@ -1,0 +1,179 @@
+{% extends "base.html" %}
+
+{% block navigation %}                                      
+<nav>                                                       
+  <ul>                                                      
+    <li><a href="#">Reportes</a></li>                       
+    <li><a href="{% url 'alumni-inscripcion' %}">Inscripci&oacute;n</a></li>
+  </ul>                                                     
+</nav>                                                      
+{% endblock %}
+
+
+{% block logout %}
+<div class="container">
+  <div class="row">
+    <div class="span12 text-right">
+      <p><a href="{% url 'logout' %}">Salir</a> {{ user.username }}</p>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+
+{% block content %}
+  <h2>Inscripci&oacute;n- Pagos y Convenios</h2>
+  <form action="" method="post" accept-charset="utf-8">
+    {% csrf_token %}
+    
+    <fieldset>
+    <legend><strong>&nbsp;Colegiaturas&nbsp;</strong></legend>
+    <table>
+      <tbody>
+        <tr>
+          <td>
+            <table>
+              <tbody>
+                <tr>
+                  <td>Agosto:</td><td>{{ form.august_payed }}</td>
+                </tr>
+                <tr>
+                  <td>Notas:</td><td>{{ form.august_annotations }}</td>
+                </tr>
+                <tr>
+                  <td>Octubre:</td><td>{{ form.october_payed }}</td>
+                </tr>
+                <tr>
+                  <td>Notas:</td><td>{{ form.october_annotations }}</td>
+                </tr>
+                <tr>
+                  <td>Diciembre:</td><td>{{ form.december_payed }}</td>
+                </tr>
+                <tr>
+                  <td>Notas:</td><td>{{ form.december_annotations }}</td>
+                </tr>
+                <tr>
+                  <td>Febrero:</td><td>{{ form.february_payed }}</td>
+                </tr>
+                <tr>
+                  <td>Notas:</td><td>{{ form.february_annotations }}</td>
+                </tr>
+                <tr>
+                  <td>Abril:</td><td>{{ form.april_payed }}</td>
+                </tr>
+                <tr>
+                  <td>Notas:</td><td>{{ form.april_annotations }}</td>
+                </tr>
+                <tr>
+                  <td>Junio:</td><td>{{ form.june_payed }}</td>
+                </tr>
+                <tr>
+                  <td>Notas:</td><td>{{ form.june_annotations }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+          <td>
+            <table>
+              <tbody>
+                <tr>
+                  <td>Septiembre:</td><td>{{ form.september_payed }}</td>
+                </tr>
+                <tr>
+                  <td>Notas:</td><td>{{ form.september_annotations }}</td>
+                </tr>
+                <tr>
+                  <td>Noviembre:</td><td>{{ form.november_payed }}</td>
+                </tr>
+                <tr>
+                  <td>Notas:</td><td>{{ form.november_annotations }}</td>
+                </tr>
+                <tr>
+                  <td>Enero:</td><td>{{ form.january_payed }}</td>
+                </tr>
+                <tr>
+                  <td>Notas:</td><td>{{ form.january_annotations }}</td>
+                </tr>
+                <tr>
+                  <td>Marzo:</td><td>{{ form.march_payed }}</td>
+                </tr>
+                <tr>
+                  <td>Notas:</td><td>{{ form.march_annotations }}</td>
+                </tr>
+                <tr>
+                  <td>Mayo:</td><td>{{ form.may_payed }}</td>
+                </tr>
+                <tr>
+                  <td>Notas:</td><td>{{ form.may_annotations }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    </fieldset>
+
+    <br />
+    <fieldset>
+    <legend><strong>&nbsp;Pagos &Uacute;nicos&nbsp;</strong></legend>
+    <table>
+      <tbody>
+        <tr>
+          <td>
+            <table>
+              <tbody>
+                <tr>
+                  <td>Registro:</td><td>{{ form.register_payed }}</td>
+                </tr>
+                <tr>
+                  <td>Notas:</td><td>{{ form.register_notes }}</td>
+                </tr>
+                <tr>
+                  <td>Seguro:</td><td>{{ form.insurance_payed }}</td>
+                </tr>
+                <tr>
+                  <td>Notas:</td><td>{{ form.insurance_notes }}</td>
+                </tr>
+                <tr>
+                  <td>Uniforme:</td><td>{{ form.uniform_payed }}</td>
+                </tr>
+                <tr>
+                  <td>Notas:</td><td>{{ form.uniform_notes }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+          <td>
+            <table>
+              <tbody>
+                <tr>
+                  <td>Material:</td><td>{{ form.supplies_payed }}</td>
+                </tr>
+                <tr>
+                  <td>Notas:</td><td>{{ form.supplies_notes }}</td>
+                </tr>
+                <tr>
+                  <td>Eventos:</td><td>{{ form.events_payed }}</td>
+                </tr>
+                <tr>
+                  <td>Notas:</td><td>{{ form.events_notes }}</td>
+                </tr>
+                <tr>
+                  <td>Otros:</td><td>{{ form.otros_payed }}</td>
+                </tr>
+                <tr>
+                  <td>Notas:</td><td>{{ form.otros_notes }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    </fieldset>
+    
+    <br />
+    <p><input type="submit" value="Documentos &rarr;" /></p>
+  </form>
+{% endblock %}
