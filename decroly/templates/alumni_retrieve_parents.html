@@ -1,0 +1,271 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load l10n %}
+
+{% block navigation %}
+<nav>
+  <ul>
+    <li><a href="{% url 'alumni-mostrar-documentos' alumno.id %}">Documentos</a></li>
+    <li><a href="{% url 'alumni-mostrar-finanzas'   alumno.id %}">Pagos</a></li>
+    <li><a href="{% url 'alumni-mostrar-autorizado' alumno.id %}">Autorizados</a></li>
+    <li><a href="{% url 'alumni-mostrar-padres'     alumno.id %}">Padres</a></li>
+    <li><a href="{% url 'alumni-mostrar'            alumno.id %}">Alumno</a></li>
+  </ul>
+</nav>
+{% endblock %}
+
+
+{% block logout %}
+<div class="container">
+  <div class="row">
+    <div class="span12 text-right">
+      <p><a href="{% url 'logout' %}">Salir</a> {{ user.username }}</p>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+
+{% block content %}
+  <h2>Mostrar - Padres</h2>
+  {% csrf_token %}
+
+  <div class="container">  
+
+    <!-- Padre -->	  
+    <div class="row">
+      <fieldset>
+        <legend><strong>&nbsp;Pap&aacute;&nbsp;</strong></legend>
+
+	<!-- Foto padre -->
+        <div class="span3">
+          {% if alumno.father_photo %}
+	  <img src="{{ alumno.father_photo.url }}" alt="Foto {{ alumno.father_familynames }} {{ alumno.father_name }}" title="Foto {{ alumno.father_familynames }} {{ alumno.father_name }}" height="250px" width="200px" style="margin-top:15px">
+	  {% endif %}
+        </div><!-- Foto padre -->
+
+	<!-- Datos padre -->
+	<div class="span9">
+	  <div class="row">
+            <div class="span2">
+              <p>Nombre:</p>
+            </div>
+            <div class="span2">
+              <p>{{ alumno.father_name }}</p>
+            </div>
+            <div class="span5">
+              <p>{{ alumno.father_familynames }}</p>
+            </div>
+          </div><!-- Nombre -->
+          <div class="row">
+            <div class="span2">
+              <p>Tel. Celular:</p>
+            </div>
+            <div class="span7">
+              <p>{{ alumno.father_cell_phone }}</p>
+            </div>
+          </div><!-- Celular -->
+          <div class="row">
+            <div class="span2">
+              <p>Tel./Ext. Trabajo:</p>
+            </div>
+            <div class="span3">
+              <p>{{ alumno.father_telephone_work }}</p>
+            </div>
+            <div class="span4">
+              <p>{{ alumno.father_telephone_extension }}</p>
+            </div>
+          </div><!-- Teléfono/ext trabajo -->
+          <div class="row">
+            <div class="span2">
+              <p>Email:</p>
+            </div>
+            <div class="span7">
+              <p>{{ alumno.father_email }}</p>
+            </div>
+          </div><!-- Email -->
+          <div class="row">
+            <div class="span2">
+              <p>Ocupaci&oacute;n:</p>
+            </div>
+            <div class="span7">
+              <p>{{ alumno.father_occupation }}</p>
+            </div>
+          </div><!-- Occupación -->
+          <div class="row">
+            <div class="span2">
+              <p>IFE:</p>
+            </div>
+            <div class="span3">
+              <p>{{ alumno.father_ife_id }}</p>
+            </div>
+            <div class="span4">
+	      {% if alumno.father_ife_file %}
+	      <p><a href="/media/{{ alumno.father_ife_file }}">{{ alumno.get_father_ife_file }}</a></p>
+	      {% else %}
+	      <p></p>
+	      {% endif %}
+            </div>
+          </div><!-- IFE ID -->
+          <div class="row">
+            <div class="span2">
+              <p>CURP:</p>
+            </div>
+            <div class="span7">
+              <p>{{ alumno.father_curp_id }}</p>
+            </div>
+          </div><!-- CURP -->
+        </div><!-- Datos padre -->
+      </fieldset>
+    </div><!-- Padre  -->
+
+    <!-- Madre -->
+    <div class="row">
+      <fieldset>
+        <legend><strong>&nbsp;Mam&aacute;&nbsp;</strong></legend>
+	
+	<!-- Foto madre -->
+        <div class="span3">
+          {% if alumno.mother_photo %}
+          <img src="{{ alumno.mother_photo.url }}" alt="Foto {{ alumno.mother_familynames }} {{ alumno.mother_name }}" title="Foto {{ alumno.mother_familynames }} {{ alumno.mother_name }}" height="250px" width="200px" style="margin-top:15px">
+          {% endif %}
+        </div><!-- Foto madre -->
+
+	<!-- Datos padre -->
+        <div class="span9">
+          <div class="row">
+            <div class="span2">
+              <p>Nombre:</p>
+            </div>
+            <div class="span2">
+              <p>{{ alumno.mother_name }}</p>
+            </div>
+            <div class="span5">
+              <p>{{ alumno.mother_familynames }}</p>
+            </div>
+          </div><!-- Nombre -->
+          <div class="row">
+            <div class="span2">
+              <p>Tel. Celular:</p>
+            </div>
+            <div class="span7">
+              <p>{{ alumno.mother_cell_phone }}</p>
+            </div>
+          </div><!-- Celular -->
+          <div class="row">
+            <div class="span2">
+              <p>Tel./Ext. Trabajo:</p>
+            </div>
+            <div class="span3">
+              <p>{{ alumno.mother_telephone_work }}</p>
+            </div>
+            <div class="span7">
+              <p>{{ alumno.mother_telephone_extension }}</p>
+            </div>
+          </div><!--Teléfono/ext trabajo -->
+          <div class="row">
+            <div class="span2">
+              <p>Email:</p>
+            </div>
+            <div class="span7">
+              <p>{{ alumno.mother_email }}</p>
+            </div>
+          </div><!-- Email --> 
+          <div class="row">
+            <div class="span2">
+              <p>Ocupaci&oacute;n:</p>
+            </div>
+            <div class="span7">
+              <p>{{ alumno.mother_occupation }}</p>
+            </div>
+          </div><!-- Ocupación -->
+          <div class="row">
+            <div class="span2">
+              <p>IFE:</p>
+            </div>
+            <div class="span3">
+              <p>{{ alumno.mother_ife_id }}</p>
+            </div>
+            <div class="span4">
+	      {% if alumno.mother_ife_file %}
+	      <p><a href="/media/{{ alumno.mother_ife_file }}">{{ alumno.get_mother_ife_file }}</a></p>
+	      {% else %}
+	      <p></p>
+	      {% endif %}
+            </div><!-- IFE ID -->
+            <div class="row">
+              <div class="span2">
+                <p>CURP:</p>
+              </div>
+              <div class="span10">
+                <p>{{ alumno.mother_curp_id }}</p>
+              </div>
+            </div><!-- CURP -->
+          </div><!-- Datos madre -->
+        </fieldset>
+      <\div><!-- Madre -->
+
+      <!-- Dirección -->
+      <div class="row">
+        <fieldset>
+          <legend><strong>&nbsp;Direcci&oacute;n&nbsp;</strong></legend>
+
+          <div class="row">
+            <div class="span2">
+              <p>Tel. Casa</p>
+            </div>
+            <div class="span10">
+              <p>{{ alumno.house_telephone }}</p>
+            </div>
+          </div><!-- Teléfono de casa -->
+          <div class="row">
+            <div class="span2">
+              <p>Calle<br  />N&uacute;mero ext/int:</p>
+            </div>
+            <div class="span3">
+              <p>{{ alumno.street_name }}</p>
+            </div>
+            <div class="span3">
+              <p>{{ alumno.street_exterior_number }}</p>
+            </div>
+            <div class="span4">
+              <p>{{ alumno.street_interior_number }}</p>
+            </div>
+          </div><!-- Calle, número exterior/interior -->
+          <div class="row">
+            <div class="span2">
+              <p>Colonia:</p>
+            </div>
+            <div class="span10">
+              <p>{{ alumno.area_colonia }}</p>
+            </div>
+          </div><!-- Colonia, zona residencial -->
+          <div class="row">
+            <div class="span2">
+              <p>C.P.</p>
+            </div>
+            <div class="span10">
+              <p>{{ alumno.zip_code }}</p>
+            </div>
+          </div><!-- C.P. Zip Code .. -->
+          <div class="row">
+            <div class="span2">
+              <p>Mapa</p>
+            </div>
+            <div class="span10">
+              <p>{{ alumno.mapa }}</p>
+            </div>
+          </div><!-- URI mapa de la dirección -->
+          <div class="row">
+            <div class="span2">
+              <p>Descripci&oacute;n:</p>
+            </div>
+            <div class="span10">
+              <p>{{ alumno.description }}</p>
+            </div>
+          </div><!-- Descripción de la casa y ubicación -entre calles -->
+        </fieldset>
+      </div><!-- Dirección -->
+
+    </div><!-- container -->
+{% endblock %}

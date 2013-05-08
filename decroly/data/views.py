@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*- 
+# -*- coding: utf-8 -*-
 # Create your views here
 from django.views.generic.list   import ListView
 from django.views.generic.base   import RedirectView
@@ -7,7 +7,7 @@ from django.views.generic.edit   import CreateView
 from django.views.generic.edit   import UpdateView
 from django.views.generic.edit   import DeleteView
 from django.core.urlresolvers    import reverse
-from braces.views import LoginRequiredMixin
+from braces.views                import LoginRequiredMixin
 import models
 import forms
 
@@ -33,6 +33,30 @@ class AlumniRetrieve(LoginRequiredMixin, DetailView):
     model               = models.Alumni
     context_object_name = 'alumno'
     template_name       = 'alumni_retrieve.html'
+
+
+class AlumniRetrievePadres(LoginRequiredMixin, DetailView):
+    model               = models.Alumni
+    context_object_name = 'alumno'
+    template_name       = 'alumni_retrieve_parents.html'
+
+
+class AlumniRetrieveAutorizado(LoginRequiredMixin, DetailView):
+    model               = models.Alumni
+    context_object_name = 'alumno'
+    template_name       = 'alumni_retrieve_authorized.html'
+
+
+class AlumniRetrieveFinanzas(LoginRequiredMixin, DetailView):
+    model               = models.Alumni
+    context_object_name = 'alumno'
+    template_name       = 'alumni_retrieve_finance.html'
+
+
+class AlumniRetrieveDocumentos(LoginRequiredMixin, DetailView):
+    model               = models.Alumni
+    context_object_name = 'alumno'
+    template_name       = 'alumni_retrieve_docs.html'
 
 
 class AlumniRegister(LoginRequiredMixin, CreateView):
@@ -80,13 +104,13 @@ class AlumniRegisterDocumentos(LoginRequiredMixin, UpdateView):
         return reverse('alumni-mostrar', kwargs={'pk':self.object.id})
 
 
-class AlumniUpdateAlumno(LoginRequiredMixin, UpdateView):
+class AlumniUpdate(LoginRequiredMixin, UpdateView):
     model               = models.Alumni
     form_class          = forms.AlumniFormRegister
     context_object_name = 'alumno'
-    template_name       = 'alumni_update_child.html'
+    template_name       = 'alumni_update.html'
     def get_success_url(self, **kwargs):
-        return reverse('alumni-mostrar', kwargs={'pk':self.object.id})
+        return reverse('alumni-actualizar', kwargs={'pk':self.object.id})
 
 
 class AlumniUpdatePadres(LoginRequiredMixin, UpdateView):
@@ -95,7 +119,7 @@ class AlumniUpdatePadres(LoginRequiredMixin, UpdateView):
     context_object_name = 'alumno'
     template_name       = 'alumni_update_parents.html'
     def get_success_url(self, **kwargs):
-        return reverse('alumni-mostrar', kwargs={'pk':self.object.id})
+        return reverse('alumni-actualizar-padres', kwargs={'pk':self.object.id})
 
 
 class AlumniUpdateAutorizado(LoginRequiredMixin, UpdateView):
@@ -104,7 +128,7 @@ class AlumniUpdateAutorizado(LoginRequiredMixin, UpdateView):
     context_object_name = 'alumno'
     template_name       = 'alumni_update_authorized.html'
     def get_success_url(self, **kwargs):
-        return reverse('alumni-mostrar', kwargs={'pk':self.object.id})
+        return reverse('alumni-actualizar-autorizado', kwargs={'pk':self.object.id})
 
 
 class AlumniUpdateFinanzas(LoginRequiredMixin, UpdateView):
@@ -113,7 +137,7 @@ class AlumniUpdateFinanzas(LoginRequiredMixin, UpdateView):
     context_object_name = 'alumno'
     template_name       = 'alumni_update_finance.html'
     def get_success_url(self, **kwargs):
-        return reverse('alumni-mostrar', kwargs={'pk':self.object.id})
+        return reverse('alumni-actualizar-finanzas', kwargs={'pk':self.object.id})
 
 
 class AlumniUpdateDocumentos(LoginRequiredMixin, UpdateView):
@@ -122,7 +146,7 @@ class AlumniUpdateDocumentos(LoginRequiredMixin, UpdateView):
     context_object_name = 'alumno'
     template_name       = 'alumni_update_docs.html'
     def get_success_url(self, **kwargs):
-        return reverse('alumni-mostrar', kwargs={'pk':self.object.id})
+        return reverse('alumni-actualizar-documentos', kwargs={'pk':self.object.id})
 
 
 class AlumniDelete(LoginRequiredMixin, DeleteView):

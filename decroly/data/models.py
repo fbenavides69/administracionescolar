@@ -26,60 +26,6 @@ class ScholarCycle(models.Model):
 
     class Admin:
         pass
-"""
-class MonthlyFee(models.Model):
-    FEE_AUGUST    = 0
-    FEE_SEPTEMBER = 1
-    FEE_OCTOBER   = 2
-    FEE_NOVEMBER  = 3
-    FEE_DECEMBER  = 4
-    FEE_JANUARY   = 5
-    FEE_FEBRUARY  = 6
-    FEE_MARCH     = 7
-    FEE_APRIL     = 8
-    FEE_MAY       = 9
-    FEE_JUNE      = 10
-    FEE_CHOICES   = (
-        (FEE_AUGUST,    u'Agosto'),
-        (FEE_SEPTEMBER, u'September'),
-        (FEE_OCTOBER,   u'Octubre'),
-        (FEE_NOVEMBER,  u'Noviembre'),
-        (FEE_DECEMBER,  u'Diciembre'),
-        (FEE_JANUARY,   u'Enero'),
-        (FEE_FEBRUARY,  u'Febrero'),
-        (FEE_MARCH,     u'Marzo'),
-        (FEE_APRIL,     u'Abril'),
-        (FEE_MAY,       u'Mayo'),
-        (FEE_JUNE,      u'Junio'),
-    )
-
-    MONTH_NOT_PAYED = 0
-    MONTH_PAYED     = 1
-    MONTH_CHOICES = (
-        (MONTH_NOT_PAYED, u'No pagado'),
-        (MONTH_PAYED,     u'Pagado'),
-    )
-
-    month      = models.IntegerField(null=True, blank=True, choices=FEE_CHOICES,   default=FEE_AUGUST,      verbose_name=u'Mes')
-    payed      = models.IntegerField(null=True, blank=True, choices=MONTH_CHOICES, default=MONTH_NOT_PAYED, verbose_name=u'Pagado')
-    date       = models.DateField(null=True, blank=True, verbose_name=u'Fecha de Pago')
-    anotations = models.TextField(blank=True, max_length=400, verbose_name=u'Notas')
-
-    def payed_string(self):
-        return self.MONTH_CHOICES[self.payed][1]
-
-    def __unicode__(self):
-        return u'%s %s' % (self.payed_string(), self.anotations)
-
-    class Meta:
-        db_table = u'Colegiatura'
-        ordering = ['month']
-        verbose_name = u'Mes'
-        verbose_name_plural = u'Meses'
-
-    class Admin:
-        pass
-"""
 
 fs_photos = FileSystemStorage(location='/media/user/photos')
 fs_docs   = FileSystemStorage(location='/media/user/docs')
@@ -173,9 +119,9 @@ class Alumni(models.Model):
         (VOICE_PLACE_HOME,     u'Casa'),
         (VOICE_PLACE_WORK,     u'Trabajo'),
         (VOICE_PLACE_PERSONAL, u'Personal'),
-        (VOICE_PLACE_OTHER,    u'Otro'), 
+        (VOICE_PLACE_OTHER,    u'Otro'),
     )
-    
+
     ALUMNI_AGREEMENT_PARTICULAR = 0
     ALUMNI_AGREEMENT_SEDESOL    = 1
     ALUMNI_AGREEMENT_SEBIDESO   = 2
@@ -187,13 +133,6 @@ class Alumni(models.Model):
         (ALUMNI_AGREEMENT_SEBIDESO,   u'SEBIDESO'),
         (ALUMNI_AGREEMENT_DIF,        u'DIF'),
         (ALUMNI_AGREEMENT_OTHER,      u'Otro'),
-    )
-
-    MONTH_NOT_PAYED = 0
-    MONTH_PAYED     = 1
-    MONTH_CHOICES = (
-        (MONTH_NOT_PAYED, u'No pagado'),
-        (MONTH_PAYED,     u'Pagado'),
     )
 
     PARENTEZCO_ABUELO = 0
@@ -286,37 +225,37 @@ class Alumni(models.Model):
     authorized2_telephone   = models.CharField(blank=True, max_length=15, verbose_name=u'Teléfono')
     authorized2_parentezco  = models.IntegerField(null=True, blank=True, choices=PARENTEZCO_CHOICES,  max_length=15, verbose_name=u'Parentezco')
     colegiatura             = models.IntegerField(null=True, blank=True, max_length=6, verbose_name=u'Colegiatura')
-    august_payed            = models.IntegerField(null=True, blank=True, choices=MONTH_CHOICES, default=MONTH_NOT_PAYED, verbose_name=u'Agosto')
+    august_payed            = models.IntegerField(null=True, blank=True, choices=ALUMNI_CHOICES, default=ALUMNI_NOT_PAYED, verbose_name=u'Agosto')
     august_payed_date       = models.DateField(null=True, blank=True, verbose_name=u'Fecha de Pago')
     august_annotations      = models.TextField(blank=True, max_length=400, verbose_name=u'Notas')
-    september_payed         = models.IntegerField(null=True, blank=True, choices=MONTH_CHOICES, default=MONTH_NOT_PAYED, verbose_name=u'Septiembre')
+    september_payed         = models.IntegerField(null=True, blank=True, choices=ALUMNI_CHOICES, default=ALUMNI_NOT_PAYED, verbose_name=u'Septiembre')
     september_payed_date    = models.DateField(null=True, blank=True, verbose_name=u'Fecha de Pago')
     september_annotations   = models.TextField(blank=True, max_length=400, verbose_name=u'Notas')
-    october_payed           = models.IntegerField(null=True, blank=True, choices=MONTH_CHOICES, default=MONTH_NOT_PAYED, verbose_name=u'Octubre')
+    october_payed           = models.IntegerField(null=True, blank=True, choices=ALUMNI_CHOICES, default=ALUMNI_NOT_PAYED, verbose_name=u'Octubre')
     october_payed_date      = models.DateField(null=True, blank=True, verbose_name=u'Fecha de Pago')
     october_annotations     = models.TextField(blank=True, max_length=400, verbose_name=u'Notas')
-    november_payed          = models.IntegerField(null=True, blank=True, choices=MONTH_CHOICES, default=MONTH_NOT_PAYED, verbose_name=u'Noviembre')
+    november_payed          = models.IntegerField(null=True, blank=True, choices=ALUMNI_CHOICES, default=ALUMNI_NOT_PAYED, verbose_name=u'Noviembre')
     november_payed_date     = models.DateField(null=True, blank=True, verbose_name=u'Fecha de Pago')
     november_annotations    = models.TextField(blank=True, max_length=400, verbose_name=u'Notas')
-    december_payed          = models.IntegerField(null=True, blank=True, choices=MONTH_CHOICES, default=MONTH_NOT_PAYED, verbose_name=u'Diciembre')
+    december_payed          = models.IntegerField(null=True, blank=True, choices=ALUMNI_CHOICES, default=ALUMNI_NOT_PAYED, verbose_name=u'Diciembre')
     december_payed_date     = models.DateField(null=True, blank=True, verbose_name=u'Fecha de Pago')
     december_annotations    = models.TextField(blank=True, max_length=400, verbose_name=u'Notas')
-    january_payed           = models.IntegerField(null=True, blank=True, choices=MONTH_CHOICES, default=MONTH_NOT_PAYED, verbose_name=u'Enero')
+    january_payed           = models.IntegerField(null=True, blank=True, choices=ALUMNI_CHOICES, default=ALUMNI_NOT_PAYED, verbose_name=u'Enero')
     january_payed_date      = models.DateField(null=True, blank=True, verbose_name=u'Fecha de Pago')
     january_annotations     = models.TextField(blank=True, max_length=400, verbose_name=u'Notas')
-    february_payed          = models.IntegerField(null=True, blank=True, choices=MONTH_CHOICES, default=MONTH_NOT_PAYED, verbose_name=u'Febrero')
+    february_payed          = models.IntegerField(null=True, blank=True, choices=ALUMNI_CHOICES, default=ALUMNI_NOT_PAYED, verbose_name=u'Febrero')
     february_payed_date     = models.DateField(null=True, blank=True, verbose_name=u'Fecha de Pago')
     february_annotations    = models.TextField(blank=True, max_length=400, verbose_name=u'Notas')
-    march_payed             = models.IntegerField(null=True, blank=True, choices=MONTH_CHOICES, default=MONTH_NOT_PAYED, verbose_name=u'Marzo')
+    march_payed             = models.IntegerField(null=True, blank=True, choices=ALUMNI_CHOICES, default=ALUMNI_NOT_PAYED, verbose_name=u'Marzo')
     march_payed_date        = models.DateField(null=True, blank=True, verbose_name=u'Fecha de Pago')
     march_annotations       = models.TextField(blank=True, max_length=400, verbose_name=u'Notas')
-    april_payed             = models.IntegerField(null=True, blank=True, choices=MONTH_CHOICES, default=MONTH_NOT_PAYED, verbose_name=u'Abril')
+    april_payed             = models.IntegerField(null=True, blank=True, choices=ALUMNI_CHOICES, default=ALUMNI_NOT_PAYED, verbose_name=u'Abril')
     april_payed_date        = models.DateField(null=True, blank=True, verbose_name=u'Fecha de Pago')
     april_annotations       = models.TextField(blank=True, max_length=400, verbose_name=u'Notas')
-    may_payed               = models.IntegerField(null=True, blank=True, choices=MONTH_CHOICES, default=MONTH_NOT_PAYED, verbose_name=u'Mayo')
+    may_payed               = models.IntegerField(null=True, blank=True, choices=ALUMNI_CHOICES, default=ALUMNI_NOT_PAYED, verbose_name=u'Mayo')
     may_payed_date          = models.DateField(null=True, blank=True, verbose_name=u'Fecha de Pago')
     may_annotations         = models.TextField(blank=True, max_length=400, verbose_name=u'Notas')
-    june_payed              = models.IntegerField(null=True, blank=True, choices=MONTH_CHOICES, default=MONTH_NOT_PAYED, verbose_name=u'Junio')
+    june_payed              = models.IntegerField(null=True, blank=True, choices=ALUMNI_CHOICES, default=ALUMNI_NOT_PAYED, verbose_name=u'Junio')
     june_payed_date         = models.DateField(null=True, blank=True, verbose_name=u'Fecha de Pago')
     june_annotations        = models.TextField(blank=True, max_length=400, verbose_name=u'Notas')
     register_payed          = models.IntegerField(null=True, blank=True, choices=ALUMNI_CHOICES,  default=ALUMNI_NOT_PAYED, verbose_name=u'Inscripción Pagada')
@@ -391,12 +330,93 @@ class Alumni(models.Model):
             if self.events_payed_date == None:
                 self.events_payed_date = datetime.datetime.now()
 
+    def get_child_photo_file(self):
+        return os.path.basename(self.child_photo.name)
+
+    def get_father_photo_file(self):
+        return os.path.basename(self.father_photo.name)
+
+    def get_mother_photo_file(self):
+        return os.path.basename(self.mother_photo.name)
+
+    def get_birth_certificate_file(self):
+        return os.path.basename(self.birth_certificate.name)
+
+    def get_curp_card_file(self):
+        return os.path,basename(self.curp_card.name)
+
+    def get_immunization_card_file(self):
+        return os.path.basename(self.immunization_card.name)
+
+    def get_father_ife_file(self):
+        return os.path.basename(self.father_ife_file.name)
+
+    def get_mother_ife_file(self):
+        return os.path.basename(self.mother_ife_file.name)
+
+    def get_parentezco1_string(self):
+        return self.PARENTEZCO_CHOICES[self.authorized1_parentezco][1]
+
+    def get_parentezco2_string(self):
+        return self.PARENTEZCO_CHOICES[self.authorized2_parentezco][1]
+
+    def get_august_payed_string(self):
+        return self.ALUMNI_CHOICES[self.august_payed][1]
+
+    def get_september_payed_string(self):
+        return self.ALUMNI_CHOICES[self.september_payed][1]
+
+    def get_october_payed_string(self):
+        return self.ALUMNI_CHOICES[self.october_payed][1]
+
+    def get_november_payed_string(self):
+        return self.ALUMNI_CHOICES[self.november_payed][1]
+
+    def get_december_payed_string(self):
+        return self.ALUMNI_CHOICES[self.december_payed][1]
+
+    def get_january_payed_string(self):
+        return self.ALUMNI_CHOICES[self.january_payed][1]
+
+    def get_february_payed_string(self):
+        return self.ALUMNI_CHOICES[self.february_payed][1]
+
+    def get_march_payed_string(self):
+        return self.ALUMNI_CHOICES[self.march_payed][1]
+
+    def get_april_payed_string(self):
+        return self.ALUMNI_CHOICES[self.april_payed][1]
+
+    def get_may_payed_string(self):
+        return self.ALUMNI_CHOICES[self.may_payed][1]
+
+    def get_june_payed_string(self):
+        return self.ALUMNI_CHOICES[self.june_payed][1]
+
+    def get_register_payed_string(self):
+        return self.ALUMNI_CHOICES[self.register_payed][1]
+
+    def get_insurance_payed_string(self):
+        return self.ALUMNI_CHOICES[self.insurance_payed][1]
+
+    def get_uniform_payed_string(self):
+        return self.ALUMNI_CHOICES[self.uniform_payed][1]
+
+    def get_supplies_payed_string(self):
+        return self.ALUMNI_CHOICES[self.supplies_payed][1]
+
+    def get_events_payed_string(self):
+        return self.ALUMNI_CHOICES[self.events_payed][1]
+
+    def get_otros_payed_string(self):
+        return self.ALUMNI_CHOICES[self.otros_payed][1]
+
     def schedule_string(self):
         return self.ALUMNI_SCHEDULE_CHOICES[self.child_schedule][1]
 
     def group_string(self):
         return self.ALUMNI_GROUP_CHOICES[self.child_group][1]
-    
+
     def agreement_string(self):
         return self.ALUMNI_AGREEMENT_CHOICES[self.agreement][1]
 
@@ -407,7 +427,7 @@ class Alumni(models.Model):
         try:
             self.cycle = ScholarCycle.objects.latest('id')
         except:
-            self.cycle = None 
+            self.cycle = None
 
     def set_folio(self):
         try:
@@ -434,13 +454,13 @@ class Alumni(models.Model):
         self.authorized1_familynames = self.authorized1_familynames.upper()
         self.authorized2_name        = self.authorized2_name.upper()
         self.authorized2_familynames = self.authorized2_familynames.upper()
-    
+
     def age(self):
         if self.child_dob > datetime.date.today().replace(year = self.child_dob.year):
             return datetime.date.today().year - self.child_dob.year - 1
         else:
             return datetime.date.today().year - self.child_dob.year
-    
+
     def save(self, *args, **kwargs):
         if not self.id:
             self.register_date = datetime.datetime.now()

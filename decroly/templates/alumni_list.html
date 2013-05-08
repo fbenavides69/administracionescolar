@@ -24,20 +24,23 @@
 {% block content %}
   <h2>Lista</h2>
   {% if alumnos %}
+
+  <div class="container">
     <table class="table table-striped table-hover">
       <thead>
         <tr>
-          <th>Folio</th><th>Nombre(s)</th><th>Apellidos</th><th>Convenio</th><th>Horario</th><th>Grupo</th><th>Tel&eacute;fono de Emergencia</th>
+		<th>Folio</th><th>Nombre(s)</th><th>Apellidos</th><th>Convenio</th><th>Horario</th><th>Grupo</th><th>Tel&eacute;fono de Emergencia</th><th>&nbsp;</th>
         </tr>
       </thead>
       <tbody>
       {% for alumno in alumnos %}
         <tr>
-          <td><a href="{% url 'alumni-mostrar' alumno.id %}">{{ alumno.folio }}</a></td><td><a href="{% url 'alumni-mostrar' alumno.id %}">{{ alumno.child_name }}</a></td><td><a href="{% url 'alumni-mostrar' alumno.id %}">{{ alumno.child_familynames }}</a></td><td><a href="{% url 'alumni-mostrar' alumno.id %}">{{ alumno.agreement_string }}</a></td><td><a href="{% url 'alumni-mostrar' alumno.id %}">{{ alumno.schedule_string }}</a></td><td><a href="{% url 'alumni-mostrar' alumno.id %}">{{ alumno.group_string }}</a></td><td><a href="{% url 'alumni-mostrar' alumno.id %}">{{ alumno.emergency_telephone_number }}</a></td>
+		<td><a href="{% url 'alumni-mostrar' alumno.id %}">{{ alumno.folio }}</a></td><td><a href="{% url 'alumni-mostrar' alumno.id %}">{{ alumno.child_name }}</a></td><td><a href="{% url 'alumni-mostrar' alumno.id %}">{{ alumno.child_familynames }}</a></td><td><a href="{% url 'alumni-mostrar' alumno.id %}">{{ alumno.agreement_string }}</a></td><td><a href="{% url 'alumni-mostrar' alumno.id %}">{{ alumno.schedule_string }}</a></td><td><a href="{% url 'alumni-mostrar' alumno.id %}">{{ alumno.group_string }}</a></td><td><a href="{% url 'alumni-mostrar' alumno.id %}">{{ alumno.emergency_telephone_number }}</a></td><td><a href="{% url 'alumni-actualizar' alumno.id %}">Editar</a>&nbsp;<a href="{% url 'alumni-borrar' alumno.id %}">Borrar</a></td>
         </tr>
       {% endfor %}
       </tbody>
     </table>
+  </div>
   {% else %}
     <p>
       No hay alumnos

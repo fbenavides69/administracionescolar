@@ -1,0 +1,127 @@
+{% extends "base.html" %}
+
+{% block navigation %}
+<nav>
+  <ul>
+    <li><a href="{% url 'alumni-mostrar-documentos' alumno.id %}">Documentos</a></li>
+    <li><a href="{% url 'alumni-mostrar-finanzas'   alumno.id %}">Pagos</a></li>
+    <li><a href="{% url 'alumni-mostrar-autorizado' alumno.id %}">Autorizados</a></li>
+    <li><a href="{% url 'alumni-mostrar-padres'     alumno.id %}">Padres</a></li>
+    <li><a href="{% url 'alumni-mostrar'            alumno.id %}">Alumno</a></li>
+  </ul>
+</nav>
+{% endblock %}
+
+
+{% block logout %}
+<div class="container">
+  <div class="row">
+    <div class="span12 text-right">
+      <p><a href="{% url 'logout' %}">Salir</a> {{ user.username }}</p>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+
+{% block content %}
+  <h2>Mostrar - Persona(s) Autorizada(s)</h2>
+  {% csrf_token %}
+
+  <div class="container">
+  
+  <!-- Persona autrizada 1 -->
+  <div class="row">
+    <fieldset>
+      <legend><strong>&nbsp;Persona Autorizada&nbsp;</strong></legend>
+      
+      <div class="row">
+        <div class="span2">
+          <p>Nombre:</p>
+        </div>
+        <div class="span2">
+          <p>{{ alumno.authorized1_name }}</p>
+        </div>
+        <div class="apan8">
+          <p>{{ alumno.authorized1_familynames }}</p>
+        </div>
+    </div><!-- Nombre -->
+    <div class="row">
+      <div class="span2">
+        <p>Tel. Celular:<p>
+      </div>
+      <div class="span10">
+        <p>{{ alumno.authorized1_cell_phone }}</p>
+      </div>
+    </div><!-- Teléfono celular -->
+    <div class="row">
+      <div class="span2">
+        <p>Tel. Casa:</p>
+      </div>
+      <div class="span10">
+        <p>{{ alumno.authorized1_telephone }}</p>
+      </div>
+    </div><!-- Teléfono residencial/casa -->
+    <div class="row">
+      <div class="span2">
+        <p>Parentezco:</p>
+      </div>
+      <div class="span10">
+	{% if alumno.authorized1_parentezco %}
+	<p>{{ alumno.get_parentezco1_string }}</p>
+	{% else %}
+	<p></p>
+	{% endif %}
+      </div><!-- Parentezco -->
+    </fieldset>
+  </div><!-- Persona autorizada 1 -->
+
+  <!-- Persona autorizada 2 -->
+  <div class="row">
+    <fieldset>
+      <legend><strong>&nbsp;Persona Autorizada&nbsp;</strong></legend>
+
+      <div class="row">
+        <div class="span2">
+          <p>Nombre:</p>
+        </div>
+        <div class="span2">
+          <p>{{ alumno.authorized2_name }}</p>
+        </div>
+        <div class="apan8">
+          <p>{{ alumno.authorized2_familynames }}</p>
+        </div>
+      </div><!-- Nombre -->
+      <div class="row">
+        <div class="span2">
+          <p>Tel. Celular:<p>
+        </div>
+        <div class="span10">
+          <p>{{ alumno.authorized2_cell_phone }}</p>
+        </div>
+      </div><!-- Teléfono celular -->
+      <div class="row">
+        <div class="span2">
+          <p>Tel. Casa:</p>
+        </div>
+        <div class="span10">
+          <p>{{ alumno.authorized2_telephone }}</p>
+        </div>
+      </div><!-- Teléfono residencial/casa -->
+      <div class="row">
+        <div class="span2">
+          <p>Parentezco:</p>
+        </div>
+        <div class="span10">
+	  {% if alumno.authorized2_parentezco %}
+	  <p>{{ alumno.get_parentezco2_string }}</p>
+	  {% else %}
+	  <p></p>
+	  {% endif %}
+        </div>
+      </div><!-- Parentezco -->
+    </fieldset>
+  </div><!-- Persona autorizada 2 -->
+
+  </div><!-- container -->
+{% endblock %}

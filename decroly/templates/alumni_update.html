@@ -9,7 +9,7 @@
     <li><a href="{% url 'alumni-actualizar-finanzas'   alumno.id %}">Pagos</a></li>
     <li><a href="{% url 'alumni-actualizar-autorizado' alumno.id %}">Autorizados</a></li>
     <li><a href="{% url 'alumni-actualizar-padres'     alumno.id %}">Padres</a></li>
-    <li><a href="{% url 'alumni-actualizar-alumno'     alumno.id %}">Alumno</a></li>
+    <li><a href="{% url 'alumni-actualizar'            alumno.id %}">Alumno</a></li>
   </ul>
 </nav>
 {% endblock %}
@@ -159,6 +159,6 @@
     </fieldset>
 
     <br />
-    <p><input type="submit" value="Guardar" /> <span><a href="{% url 'alumni-mostrar' alumno.id %}">Volver</a></span><p>
+    <p><input type="submit" value="Guardar" /><p>
   </form>
 {% endblock %}

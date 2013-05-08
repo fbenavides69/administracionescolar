@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block navigation %}
+<nav>
+  <ul>
+    <li><a href="{% url 'alumni-mostrar-documentos' alumno.id %}">Documentos</a></li>
+    <li><a href="{% url 'alumni-mostrar-finanzas'   alumno.id %}">Pagos</a></li>
+    <li><a href="{% url 'alumni-mostrar-autorizado' alumno.id %}">Autorizados</a></li>
+    <li><a href="{% url 'alumni-mostrar-padres'     alumno.id %}">Padres</a></li>
+    <li><a href="{% url 'alumni-mostrar'            alumno.id %}">Alumno</a></li>
+  </ul>
+</nav>
+{% endblock %}
+
+
+{% block logout %}
+<div class="container">
+  <div class="row">
+    <div class="span12 text-right">
+      <p><a href="{% url 'logout' %}">Salir</a> {{ user.username }}</p>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+
+{% block content %}
+  <h2>Mostrar - Documentos</h2>
+  {% csrf_token %}
+  <div class="container">
+    <div class="row">
+      <div class="span2"><p>Acta de Nacimiento:</p></div>
+      <div class="span10"><p><a href="/media/{{ alumno.birth_certificate }}">{{ alumno.birth_certificate }}</a></p></div>
+    </div>
+    <div class="row">
+      <div class="span2"><p>Cartilla de Vacunaci&oacute;n:</p></div>
+      <div class="span10"><p><a href="/media/{{ alumno.immunization_card }}">{{ alumno.immunization_card }}</a></p></div>
+    </div>
+    <div class="row">
+      <div class="span2"><p>CURP</p></div>
+      <div class="span10"><p><a href="/media/{{ alumno.curp_card }}">{{ alumno.curp_card }}</a></p></div>
+    </div>
+  </div>
+{% endblock %}

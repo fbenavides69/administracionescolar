@@ -1,7 +1,7 @@
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf.urls                import patterns, include, url
 from django.conf.global_settings     import STATICFILES_DIRS, DEBUG
-from django.conf.urls.defaults       import *
+from django.conf.urls                import patterns, url, include
 import decroly.views
 
 # Uncomment the next two lines to enable the admin:
@@ -36,7 +36,7 @@ urlpatterns = patterns('decroly.views',
 #from decroly.settings import DEBUG, STATIC_ROOT
 #if DEBUG:
 #    urlpatterns += patterns('', (
-#        r'^static/(?P.*)$', 'django.views.static.serve', 
+#        r'^static/(?P.*)$', 'django.views.static.serve',
 #        {'document_root':STATIC_ROOT, 'show_indexes': True}
 #    ), )
 
